@@ -526,6 +526,7 @@ func (s *Server) parsePackets(batcher *batcher, parser *parser, packets []*packe
 					s.errLog("Dogstatsd: error parsing service check '%q': %s", message, err)
 					continue
 				}
+				fmt.Printf("parsed: %+v\n", serviceCheck)
 				batcher.appendServiceCheck(serviceCheck)
 			case eventType:
 				event, err := s.parseEventMessage(parser, message, packet.Origin)

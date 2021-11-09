@@ -77,6 +77,7 @@ func (b *batcher) flush() {
 	if len(b.serviceChecks) > 0 {
 		t1 := time.Now()
 		b.choutServiceChecks <- b.serviceChecks
+		fmt.Printf("flushed %d serviceChecks\n", len(b.serviceChecks))
 		t2 := time.Now()
 		tlmChannel.Observe(float64(t2.Sub(t1).Nanoseconds()), "service_checks")
 

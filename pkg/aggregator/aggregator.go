@@ -430,6 +430,7 @@ func (agg *BufferedAggregator) addServiceCheck(sc metrics.ServiceCheck) {
 	tb.SortUniq()
 	sc.Tags = tb.Get()
 
+	fmt.Printf("aggregated: %+v\n", sc)
 	agg.serviceChecks = append(agg.serviceChecks, &sc)
 }
 
