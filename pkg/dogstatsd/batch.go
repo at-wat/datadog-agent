@@ -1,6 +1,7 @@
 package dogstatsd
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/DataDog/datadog-agent/pkg/aggregator"
