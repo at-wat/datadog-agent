@@ -281,6 +281,7 @@ func (s *Serializer) SendServiceChecks(sc marshaler.StreamJSONMarshaler) error {
 	}
 
 	if useV1API {
+		fmt.Printf("submitting v1: %+v\n", serviceCheckPayloads)
 		return s.Forwarder.SubmitV1CheckRuns(serviceCheckPayloads, extraHeaders)
 	}
 	fmt.Printf("submitting: %+v\n", serviceCheckPayloads)
