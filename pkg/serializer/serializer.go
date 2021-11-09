@@ -280,11 +280,13 @@ func (s *Serializer) SendServiceChecks(sc marshaler.StreamJSONMarshaler) error {
 		return fmt.Errorf("dropping service check payload: %s", err)
 	}
 
+	for _, b := range serviceCheckPayloads {
+		fmt.Printf("submitting: %s\n", string(*b))
+	}
+
 	if useV1API {
-		fmt.Printf("submitting v1: %+v\n", serviceCheckPayloads)
 		return s.Forwarder.SubmitV1CheckRuns(serviceCheckPayloads, extraHeaders)
 	}
-	fmt.Printf("submitting: %+v\n", serviceCheckPayloads)
 	return s.Forwarder.SubmitServiceChecks(serviceCheckPayloads, extraHeaders)
 }
 
