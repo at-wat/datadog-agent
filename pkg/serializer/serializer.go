@@ -281,7 +281,7 @@ func (s *Serializer) SendServiceChecks(sc marshaler.StreamJSONMarshaler) error {
 	}
 
 	for _, b := range serviceCheckPayloads {
-		fmt.Printf("submitting: %d bytes\n", len(*b))
+		fmt.Printf("submitting: %s\n", string(*b))
 	}
 
 	if useV1API {
